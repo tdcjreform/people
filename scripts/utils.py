@@ -39,6 +39,12 @@ def reformat_address(address):
     return re.sub(r'\s+', ' ', re.sub(r'\s*\n\s*', ';', address))
 
 
+def reformat_name(name):
+    if name.count(',') == 1:
+        name = ' '.join(name.split(',')[::-1]).strip()
+    return name
+
+
 def get_data_dir(abbr):
     return os.path.join(os.path.dirname(__file__), '../data', abbr)
 

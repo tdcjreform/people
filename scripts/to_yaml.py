@@ -5,8 +5,8 @@ import os
 import uuid
 import click
 from collections import defaultdict, OrderedDict
-from utils import (reformat_phone_number, reformat_address, get_data_dir, get_jurisdiction_id,
-                   dump_obj)
+from utils import (reformat_phone_number, reformat_address, reformat_name,
+                   get_data_dir, get_jurisdiction_id, dump_obj)
 
 
 def process_link(link):
@@ -108,7 +108,7 @@ def process_person(person, jurisdiction_id):
 
     result = OrderedDict(
         id=ocd_uuid('person'),
-        name=person['name'],
+        name=reformat_name(person['name']),
         party=[],
         roles=[],
         contact_details=[],
